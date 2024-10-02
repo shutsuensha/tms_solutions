@@ -35,6 +35,34 @@ The repository is organized into folders, with each folder corresponding to a pa
 └── Final_Project/
 ```
 
+## 🔧 How to Run the Projects
+
+To set up and run any project in this repository, follow these general steps:
+
+1. **Clone the Repository**:
+   Open your terminal and run the following command to clone the repository to your local machine:
+   ```bash
+   git clone https://github.com/shutsuensha/tms_solutions.git
+   cd tms_solutions
+   ```
+2. **Navigate to the Project Directory:**
+   Each project may have its own `requirements.txt` file. Navigate to the respective project folder and install generate venv activate it and install dependencies:
+   ```bash
+   cd <project_directory_name>
+   ```
+3. **Create and Activate a Virtual Environment (optional but recommended):**
+   ```bash
+   python3 -m venv venv
+   source venv/bin/activate  # For Linux/MacOS
+   venv\Scripts\activate  # For Windows
+   ```
+4. **Install Dependencies:**
+   ```bash
+   pip3 install -r requirements.txt
+   ```
+5. **Set Up Environment Variables (if applicable):**
+   If the project requires specific environment variables (such as database credentials or API keys), create a .env file or export the variables in your terminal. Refer to the project’s README.md for details on the required variables.
+
 ## Contacts
 Project author: **Daniil Kupryianchyk**  
 Email: dankupr21@gmail.com  
