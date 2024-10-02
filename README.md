@@ -46,7 +46,7 @@ To set up and run any project in this repository, follow these general steps:
    cd tms_solutions
    ```
 2. **Navigate to the Project Directory:**
-   Each project may have its own `requirements.txt` file. Navigate to the respective project folder and install generate venv activate it and install dependencies:
+   Each topic or project is stored in its own directory. Navigate to the desired project directory:
    ```bash
    cd <project_directory_name>
    ```
