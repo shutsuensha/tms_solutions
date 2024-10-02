@@ -66,7 +66,7 @@ To set up and run any project in this repository, follow these general steps:
    ```
 5. **Set Up Environment Variables (if applicable):**
    If the project requires specific environment variables (such as database credentials or API keys), create a .env file or export the variables in your terminal. Refer to the project’s README.md for details on the required variables.
-6. **Next foolow README.md file in Project Directory for setup and run project**
+6. **Next follow README.md file in Project Directory for setup and run project**
 
 ## Contacts
 Project author: **Daniil Kupryianchyk**  
