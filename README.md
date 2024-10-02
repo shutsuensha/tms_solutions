@@ -25,10 +25,14 @@ The repository is organized into folders, with each folder corresponding to a pa
 ├── 1.Python_Basics/
 │   ├── Task_1/
 │   ├── Task_2/
-│   └── ...
+│   ├── requirements.txt
+│   ├── README.md
+│   └── 
 ├── 2.Django_Fundamentals/
 │   ├── Task_1/
 │   ├── Project/
+│   ├── requirements.txt
+│   ├── README.md
 │   └── ...
 ├── 3.Asynchronous_Programming/
 │   └── ...
