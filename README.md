@@ -68,7 +68,7 @@ To set up and run any project in this repository, follow these general steps:
    If the project requires specific environment variables (such as database credentials or API keys), create a .env file or export the variables in your terminal. Refer to the project’s README.md for details on the required variables.
 6. **Next follow README.md file in Project Directory for setup and run project**
 
-## Contacts
+## 📧 Contact
 Project author: **Daniil Kupryianchyk**  
 Email: dankupr21@gmail.com  
 Telegram: [@evalshine](https://t.me/evalshine)
