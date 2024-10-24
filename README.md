@@ -1,6 +1,7 @@
 # TeachMeSkills Python Backend Solutions
 
 Welcome to the **TeachMeSkills Solutions** repository! This repository contains homework assignments and projects completed during the Python Backend Development course from [TeachMeSkills](https://teachmeskills.by/), an online programming school.
+- https://lms.teachmeskills.com/courses
 
 ## 🧑‍💻 About the Course
 
