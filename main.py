@@ -1,33 +1,24 @@
-def find_columns_with_value(matrix, H):
+def sum_diagonals(matrix):
     M = len(matrix)
     N = len(matrix[0])
+    main_diagonal_sum = 0
+    secondary_diagonal_sum = 0
 
-    columns_with_H = []
-    columns_without_H = []
+    for i in range(M):
+        if i < N:
+            main_diagonal_sum += matrix[i][i]
+        if i < N:
+            secondary_diagonal_sum += matrix[i][N - 1 - i]
 
-
-    for j in range(N):
-        has_H = False
-        for i in range(M):
-            if matrix[i][j] == H:
-                has_H = True
-                break
-        if has_H:
-            columns_with_H.append(j)
-        else:
-            columns_without_H.append(j)
-    
-    return columns_with_H, columns_without_H
+    return main_diagonal_sum, secondary_diagonal_sum
 
 matrix = [
-    [12, 34, 56],
-    [90, 23, 45],
-    [89, 10, 11],
-    [34, 23, 56]
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
 ]
 
-H = 34
-columns_with_H, columns_without_H = find_columns_with_value(matrix, H)
+main_sum, secondary_sum = sum_diagonals(matrix)
 
-print(f"Столбцы, содержащие число {H}: {columns_with_H}")
-print(f"Столбцы, не содержащие число {H}: {columns_without_H}")
+print(f"Сумма элементов главной диагонали: {main_sum}")
+print(f"Сумма элементов побочной диагонали: {secondary_sum}")
