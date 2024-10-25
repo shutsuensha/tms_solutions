@@ -1,3 +1,3 @@
-numbers = [-3, 0, 2, -1, 5, -7]
-positive_numbers = list(filter(lambda x: x > 0, numbers))
-print(positive_numbers)
+strings = ['abc', 'madam', 'racecar', 'hello', 'level']
+palindromes = list(filter(lambda x: x == x[::-1], strings))
+print(palindromes)
