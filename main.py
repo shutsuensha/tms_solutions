@@ -1,27 +1,56 @@
-def calculate_bmi(weight, height):
-    bmi = weight / (height ** 2)  # Формула для расчета ИМТ
-    return bmi
+class Calculator:
+    def __init__(self, num1, num2):
+        self.num1 = num1
+        self.num2 = num2
 
-def bmi_category(bmi):
-    if bmi < 18.5:
-        return "Недостаточная масса тела"
-    elif 18.5 <= bmi < 24.9:
-        return "Норма"
-    elif 25 <= bmi < 29.9:
-        return "Избыточная масса тела"
-    else:
-        return "Ожирение"
+    def add(self):
+        return self.num1 + self.num2
 
-try:
-    weight = float(input("Введите ваш вес (в кг): "))
-    height = float(input("Введите ваш рост (в метрах): "))
-    
-    if weight <= 0 or height <= 0:
-        raise ValueError("Вес и рост должны быть положительными числами.")
+    def subtract(self):
+        return self.num1 - self.num2
 
-    bmi = calculate_bmi(weight, height)
-    
-    print(f"Ваш ИМТ: {bmi:.2f}")
-    print(f"Категория: {bmi_category(bmi)}")
-except ValueError as e:
-    print(f"Ошибка ввода: {e}")
+    def multiply(self):
+        return self.num1 * self.num2
+
+    def divide(self):
+        try:
+            return self.num1 / self.num2
+        except ZeroDivisionError:
+            return "Ошибка: Деление на ноль."
+
+def get_operation():
+    operations = ('+','-','*','/')
+
+    while True:
+        operation = input("Введите операцию (+, -, *, /): ")
+        if operation in operations:
+            return operation
+        else:
+            print("Неверная операция. Попробуйте снова.")
+
+def main():
+    try:
+        num1 = float(input("Введите первое число: "))
+        num2 = float(input("Введите второе число: "))
+
+        operation = get_operation()
+
+        calculator = Calculator(num1, num2)
+
+        result = 0
+        if operation == '+':
+            result = calculator.add()
+        elif operation == '-':
+            result = calculator.subtract()
+        elif operation == '*':
+            result = calculator.multiply()
+        elif operation == '/':
+            result = calculator.divide()
+
+        print(f"Результат: {result}")
+        
+    except ValueError:
+        print("Ошибка: Пожалуйста, введите числовые значения.")
+
+if __name__ == "__main__":
+    main()
