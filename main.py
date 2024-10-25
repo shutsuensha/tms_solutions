@@ -1,6 +1,6 @@
-number = 200
+number = 123
 
-# Last digit
-last_digit = number % 10
+# Tens digit
+tens_digit = (number // 10) % 10
 
-print(f"Last digit: {last_digit}")
+print(f"Tens digit: {tens_digit}")
