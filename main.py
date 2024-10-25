@@ -1,9 +1,30 @@
-string = "hhhabchghhh"
+string = "Hello"
 
-first_h_index = string.find('h')
-last_h_index = string.rfind('h')
+# 1. Third character
+if len(string) >= 3:
+    print(string[2])
 
-middle_part = string[first_h_index+1:last_h_index].replace('h', 'H')
-result = string[:first_h_index+1] + middle_part + string[last_h_index:]
+# 2. Penultimate character
+if len(string) >= 2:
+    print(string[-2])
 
-print(f"Result: {result}")
+# 3. First five characters
+print(string[:5])
+
+# 4. All except the last two characters
+print(string[:-2])
+
+# 5. All characters with even indices
+print(string[::2])
+
+# 6. All characters with odd indices
+print(string[1::2])
+
+# 7. All characters in reverse order
+print(string[::-1])
+
+# 8. Every other character in reverse order
+print(string[::-2])
+
+# 9. Length of the string
+print(len(string))
