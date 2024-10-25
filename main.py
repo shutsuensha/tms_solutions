@@ -1,27 +1,28 @@
-def find_min_max(matrix):
-    min_value = float('inf')
-    max_value = float('-inf')
-    min_index = (-1, -1)
-    max_index = (-1, -1)
+def calculate_column_percentages(matrix):
+    total_sum = sum(sum(row) for row in matrix)
     
-    for i in range(len(matrix)):
-        for j in range(len(matrix[i])):
-            if matrix[i][j] < min_value:
-                min_value = matrix[i][j]
-                min_index = (i, j)
-            if matrix[i][j] > max_value:
-                max_value = matrix[i][j]
-                max_index = (i, j)
+    M = len(matrix)
+    N = len(matrix[0])
     
-    return min_value, min_index, max_value, max_index
+    column_sums = [0] * N
+    
+    for i in range(M):
+        for j in range(N):
+            column_sums[j] += matrix[i][j]
+    
+    column_percentages = [(column_sum / total_sum) * 100 for column_sum in column_sums]
+    
+    return total_sum, column_sums, column_percentages
+
 
 matrix = [
-    [12, 34, 56, 78],
-    [90, 23, 45, 67],
-    [89, 10, 11, 13]
+    [12, 34, 56],
+    [90, 23, 45],
+    [89, 10, 11]
 ]
 
-min_value, min_index, max_value, max_index = find_min_max(matrix)
+total_sum, column_sums, column_percentages = calculate_column_percentages(matrix)
 
-print(f"Минимальный элемент: {min_value}, Индексы: {min_index}")
-print(f"Максимальный элемент: {max_value}, Индексы: {max_index}")
+print(f"Общая сумма элементов матрицы: {total_sum}")
+print(f"Суммы элементов по столбцам: {column_sums}")
+print(f"Процентные доли по столбцам: {column_percentages}")
