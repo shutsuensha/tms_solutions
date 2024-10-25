@@ -1,56 +1,35 @@
-import os
-import shutil
-import platform
-from pathlib import Path
-from collections import defaultdict
+def print_lines(file_path, s1=None, s2=None):
+    with open(file_path, 'r', encoding='utf-8') as file:
+        lines = file.readlines()
 
-def get_size_in_gb(size_bytes):
-    """Helper function to convert bytes to gigabytes."""
-    return size_bytes / (1024 ** 3)
+        # a) Print the first line
+        if len(lines) >= 1:
+            print("a) First line:", lines[0].strip())
+        else:
+            print("a) The file has less than 1 line.")
 
-def main():
-    # Print the name of the OS
-    print(f"Operating System: {platform.system()}")
+        # b) Print the fifth line
+        if len(lines) >= 5:
+            print("b) Fifth line:", lines[4].strip())
+        else:
+            print("b) The file has less than 5 lines.")
 
-    # Print the current directory
-    current_path = Path.cwd()
-    print(f"Current Directory: {current_path}")
+        # c) Print the first 5 lines
+        print("c) First 5 lines:")
+        for line in lines[:5]:
+            print(line.strip())
 
-    # Dictionary to hold files by extension
-    files_by_ext = defaultdict(list)
+        # d) Print lines from s1 to s2 (inclusive)
+        if s1 and s2:
+            print(f"d) Lines from {s1} to {s2}:")
+            for line in lines[s1-1:s2]:
+                print(line.strip())
 
-    # Collect files by extension
-    for file in current_path.iterdir():
-        if file.is_file():
-            ext = file.suffix
-            files_by_ext[ext].append(file)
+        # e) Print the entire file
+        print("e) Entire file content:")
+        for line in lines:
+            print(line.strip())
 
-    # Sort files into extension-based folders and move them
-    for ext, files in files_by_ext.items():
-        # Skip files with .py extension
-        if ext == '.py':
-            continue
-
-        folder_name = ext[1:].upper() + "_FILES"
-        target_folder = current_path / folder_name
-        target_folder.mkdir(exist_ok=True)
-
-        total_size = 0
-        for file in files:
-            file_size = file.stat().st_size
-            total_size += file_size
-            shutil.move(str(file), target_folder)
-
-        # Output message about sorted files and their size in BYTES
-        # For output message with GB replace {total_size} on {get_size_in_gb(total_size):.2f}
-        print(f"In folder '{folder_name}', {len(files)} file(s) were moved with a total size of {total_size} bytes")
-
-        # Rename at least one file in the folder
-        renamed_file = list(target_folder.iterdir())[0]
-        new_name = f"renamed_{renamed_file.name}"
-        renamed_path = target_folder / new_name
-        renamed_file.rename(renamed_path)
-        print(f"File '{renamed_file.name}' was renamed to '{new_name}'")
-
-if __name__ == "__main__":
-    main()
+file_path = 'a.txt'
+s1, s2 = 3, 6  # Example values for lines s1 to s2 (inclusive)
+print_lines(file_path, s1, s2)
