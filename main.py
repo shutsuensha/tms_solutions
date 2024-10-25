@@ -1,28 +1,33 @@
-def calculate_column_percentages(matrix):
-    total_sum = sum(sum(row) for row in matrix)
-    
+def find_columns_with_value(matrix, H):
     M = len(matrix)
     N = len(matrix[0])
-    
-    column_sums = [0] * N
-    
-    for i in range(M):
-        for j in range(N):
-            column_sums[j] += matrix[i][j]
-    
-    column_percentages = [(column_sum / total_sum) * 100 for column_sum in column_sums]
-    
-    return total_sum, column_sums, column_percentages
 
+    columns_with_H = []
+    columns_without_H = []
+
+
+    for j in range(N):
+        has_H = False
+        for i in range(M):
+            if matrix[i][j] == H:
+                has_H = True
+                break
+        if has_H:
+            columns_with_H.append(j)
+        else:
+            columns_without_H.append(j)
+    
+    return columns_with_H, columns_without_H
 
 matrix = [
     [12, 34, 56],
     [90, 23, 45],
-    [89, 10, 11]
+    [89, 10, 11],
+    [34, 23, 56]
 ]
 
-total_sum, column_sums, column_percentages = calculate_column_percentages(matrix)
+H = 34
+columns_with_H, columns_without_H = find_columns_with_value(matrix, H)
 
-print(f"Общая сумма элементов матрицы: {total_sum}")
-print(f"Суммы элементов по столбцам: {column_sums}")
-print(f"Процентные доли по столбцам: {column_percentages}")
+print(f"Столбцы, содержащие число {H}: {columns_with_H}")
+print(f"Столбцы, не содержащие число {H}: {columns_without_H}")
