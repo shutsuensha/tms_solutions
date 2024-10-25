@@ -1,30 +1,12 @@
-a = 10
-b = 5
-c = 3
+import math
 
-# Sum
-sum_value = a + b + c
+cat_a = 3
+cat_b = 4
 
-# Difference
-difference_value = a - b - c
+# Area of the triangle
+area = (cat_a * cat_b) / 2
 
-# Product
-product_value = a * b * c
+# Hypotenuse using Pythagorean theorem
+hypotenuse = math.sqrt(cat_a**2 + cat_b**2)
 
-# Subtract second from first and add third
-result_1 = a - b + c
-
-# Divide product of two variables by the third
-if c != 0:
-    result_2 = (a * b) / c
-else:
-    result_2 = "Cannot divide by zero"
-
-# Remainder of the sum of the first two variables divided by the third
-if c != 0:
-    result_3 = (a + b) % c
-else:
-    result_3 = "Cannot divide by zero"
-
-print(f"Sum: {sum_value}, Difference: {difference_value}, Product: {product_value},")
-print(f"Result 1: {result_1}, Result 2: {result_2}, Result 3: {result_3}")
+print(f"Area: {area}, Hypotenuse: {hypotenuse}")
