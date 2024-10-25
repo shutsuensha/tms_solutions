@@ -1,24 +1,22 @@
-def binary_search(arr, target):
-    left, right = 0, len(arr) - 1
+def binary_search_recursive(arr, target, low, high):
+    if low > high:
+        return -1
     
-    while left <= right:
-        mid = (left + right) // 2
-        
-        if arr[mid] == target:
-            return mid  # Возвращаем индекс, если нашли элемент
-        elif arr[mid] < target:
-            left = mid + 1  # Продолжаем поиск в правой половине
-        else:
-            right = mid - 1  # Продолжаем поиск в левой половине
+    mid = (low + high) // 2
 
-    return -1  # Если элемент не найден
+    if arr[mid] == target:
+        return mid
+    elif arr[mid] > target:
+        return binary_search_recursive(arr, target, low, mid - 1)
+    else:
+        return binary_search_recursive(arr, target, mid + 1, high)
 
-numbers = list(map(int, input("Введите отсортированный список чисел через пробел: ").split()))
-target = int(input("Введите искомое число: "))
 
-position = binary_search(numbers, target)
+arr = [1, 3, 5, 7, 9, 11, 13]
+target = 7
+result = binary_search_recursive(arr, target, 0, len(arr) - 1)
 
-if position != -1:
-    print(f"Элемент найден на позиции: {position}")
+if result != -1:
+    print(f"Элемент найден на позиции: {result}")
 else:
-    print("Элемент не найден в списке.")
+    print("Элемент не найден")
