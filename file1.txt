@@ -1,0 +1,6 @@
+Hello world
+This is a test
+Python is great
+Let's compare files
+This line is the same
+End of the file
