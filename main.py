@@ -1,17 +1,20 @@
-def list_statistics(numbers):
-    # Находим сумму, минимальное и максимальное значение
-    total_sum = sum(numbers)
-    minimum = min(numbers)
-    maximum = max(numbers)
+from collections import Counter
+
+def check_uniqueness(numbers):
+    # Используем Counter для подсчета количества каждого элемента
+    count = Counter(numbers)
     
-    return total_sum, minimum, maximum
+    # Проверяем, все ли элементы уникальны
+    all_unique = all(value == 1 for value in count.values())
 
+    if all_unique:
+        print("Все числа уникальны.")
+    else:
+        print("Есть дублирующиеся элементы:")
+        for num, freq in count.items():
+            if freq > 1:
+                print(f"Число {num}, количество повторений {freq}")
 
+# Пример использования:
 numbers = list(map(int, input("Введите список чисел через пробел: ").split()))
-
-total_sum, minimum, maximum = list_statistics(numbers)
-
-# Печатаем результаты
-print(f"Сумма всех чисел: {total_sum}")
-print(f"Минимальное число: {minimum}")
-print(f"Максимальное число: {maximum}")
+check_uniqueness(numbers)
