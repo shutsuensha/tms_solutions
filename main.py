@@ -1,20 +1,24 @@
-from collections import Counter
-
-def check_uniqueness(numbers):
-    # Используем Counter для подсчета количества каждого элемента
-    count = Counter(numbers)
+def binary_search(arr, target):
+    left, right = 0, len(arr) - 1
     
-    # Проверяем, все ли элементы уникальны
-    all_unique = all(value == 1 for value in count.values())
+    while left <= right:
+        mid = (left + right) // 2
+        
+        if arr[mid] == target:
+            return mid  # Возвращаем индекс, если нашли элемент
+        elif arr[mid] < target:
+            left = mid + 1  # Продолжаем поиск в правой половине
+        else:
+            right = mid - 1  # Продолжаем поиск в левой половине
 
-    if all_unique:
-        print("Все числа уникальны.")
-    else:
-        print("Есть дублирующиеся элементы:")
-        for num, freq in count.items():
-            if freq > 1:
-                print(f"Число {num}, количество повторений {freq}")
+    return -1  # Если элемент не найден
 
-# Пример использования:
-numbers = list(map(int, input("Введите список чисел через пробел: ").split()))
-check_uniqueness(numbers)
+numbers = list(map(int, input("Введите отсортированный список чисел через пробел: ").split()))
+target = int(input("Введите искомое число: "))
+
+position = binary_search(numbers, target)
+
+if position != -1:
+    print(f"Элемент найден на позиции: {position}")
+else:
+    print("Элемент не найден в списке.")
