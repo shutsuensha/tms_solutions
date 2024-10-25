@@ -1,31 +1,32 @@
-def calculate_monthly_payment(s, i, n):
-    # Годовая процентная ставка i переводится в месячную
-    p = i / 12 / 100
-    # Формула расчета ежемесячной выплаты
-    m = s * p * (1 + p)**n / ((1 + p)**n - 1)
-    return m
+import math
 
-def calculate_total_payment(m, n):
-    # Общая сумма выплат
-    return m * n
+def calculate_year_length(R, v):
+    # Формула расчета длины года
+    L = (2 * R * math.pi) / v
+    return L
 
-def calculate_overpayment(total_payment, s):
-    # Переплата
-    return total_payment - s
+# Ввод данных для первой планеты
+print("Первая планета:")
+R1 = float(input("Введите радиус орбиты (млн км): ")) * 1_000_000  # Перевод в километры
+v1 = float(input("Введите орбитальную скорость (км/ч): "))
 
-# Ввод данных от пользователя
-s = float(input("Введите сумму займа (s): "))
-i = float(input("Введите годовую процентную ставку (i) в %: "))
-n = int(input("Введите количество месяцев (n): "))
+# Ввод данных для второй планеты
+print("\nВторая планета:")
+R2 = float(input("Введите радиус орбиты (млн км): ")) * 1_000_000  # Перевод в километры
+v2 = float(input("Введите орбитальную скорость (км/ч): "))
 
-# Расчет ежемесячной выплаты
-monthly_payment = calculate_monthly_payment(s, i, n)
+# Вычисляем длину года для обеих планет
+L1 = calculate_year_length(R1, v1)
+L2 = calculate_year_length(R2, v2)
 
-# Общая сумма выплат и переплата
-total_payment = calculate_total_payment(monthly_payment, n)
-overpayment = calculate_overpayment(total_payment, s)
+# Выводим результаты
+print(f"\nДлина года на первой планете: {L1:.2f} часов")
+print(f"Длина года на второй планете: {L2:.2f} часов")
 
-# Вывод результатов
-print(f"\nЕжемесячная выплата: {monthly_payment:.2f}")
-print(f"Общая сумма выплат: {total_payment:.2f}")
-print(f"Переплата: {overpayment:.2f}")
+# Сравнение
+if L1 > L2:
+    print("\nГод на первой планете длиннее.")
+elif L1 < L2:
+    print("\nГод на второй планете длиннее.")
+else:
+    print("\nГоды на обеих планетах одинаковой длины.")
