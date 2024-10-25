@@ -1,24 +1,14 @@
-def calculate_days_to_save(N, k):
-    result = 0
-    cnt = 6
-    weeks = 0
-    # сколько недель надо маше на покупку, последнюю неделю не считаем
-    while True:
-        result += cnt * k
-        if result > N:
-            result -= cnt * k
-            break
-        weeks += 1
-    days = weeks * 7
-    # количество дней без учета последней недели + кол-во дней
-    while True:
-        result += k
-        days += 1
-        if result >= N:
-            return days
-    
+def fibonacci_recursive(n):
+    if n == 1 or n == 2:
+        return 1
+    else:
+        return fibonacci_recursive(n-1) + fibonacci_recursive(n-2)
 
-N = int(input("Введите стоимость телефона: "))
-k = int(input("Введите сумму, которую Маша откладывает каждый день: "))
-days = calculate_days_to_save(N, k)
-print(f"Маша накопит на телефон за {days} дней.")
+def print_fibonacci_sequence(n):
+    sequence = [fibonacci_recursive(i) for i in range(1, n+1)]
+    print("Последовательность Фибоначчи:")
+    print(" ".join(map(str, sequence)))
+
+
+n = int(input("Сколько чисел Фибоначчи вы хотите вывести? "))
+print_fibonacci_sequence(n)
