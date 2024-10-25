@@ -1,11 +1,9 @@
-def decimal_to_binary_recursive(n):
-    if n == 0:
-        return "0"
-    elif n == 1:
-        return "1"
-    else:
-        return decimal_to_binary_recursive(n // 2) + str(n % 2)
+def gcd(a, b):
+    while b != 0:
+        a, b = b, a % b
+    return a
 
-number = 13
-binary_representation = decimal_to_binary_recursive(number)
-print(f"Двоичное представление числа {number}: {binary_representation}")
+a = 12
+b = 18
+result = gcd(a, b)
+print(f"НОД чисел {a} и {b}: {result}")
