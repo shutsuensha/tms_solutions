@@ -1,9 +1,8 @@
 def create_matrix(n):
-    start = 100  
-    step = 2     
+    start = 100 
+    step = 2    
     matrix = []  
 
-    # Заполняем матрицу
     for i in range(n):
         row = []
         for j in range(n):
@@ -13,9 +12,11 @@ def create_matrix(n):
 
     return matrix
 
+def print_matrix(matrix):
+    for row in matrix:
+        print("  ".join(map(str, row)))
+
+
 n = int(input("Введите размер матрицы: "))
 matrix = create_matrix(n)
-
-# Печать матрицы
-for row in matrix:
-    print(row)
+print_matrix(matrix)
