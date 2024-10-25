@@ -1,19 +1,16 @@
-import time
+from functools import reduce
 
-def time_it(func):
-    def wrapper(*args, **kwargs):
-        start_time = time.time()  # Запоминаем время начала
-        result = func(*args, **kwargs)  # Выполняем декорируемую функцию
-        end_time = time.time()  # Запоминаем время окончания
-        print(f"Время выполнения {func.__name__}: {end_time - start_time:.6f} секунд")
-        return result
-    return wrapper
+rooms = [
+    {"name": "Kitchen", "length": 6, "width": 4},
+    {"name": "Room 1", "length": 5.5, "width": 4.5},
+    {"name": "Room 2", "length": 5, "width": 4},
+    {"name": "Room 3", "length": 7, "width": 6.3},
+]
 
-# Пример использования
-@time_it
-def example_function():
-    time.sleep(1)  # Задержка в 1 секунду для демонстрации
-    return "Функция завершена"
+# Используем map() для вычисления площади каждой комнаты
+areas = map(lambda room: room['length'] * room['width'], rooms)
 
-result = example_function()
-print(result)
+# Используем reduce() для суммирования всех площадей
+total_area = reduce(lambda x, y: x + y, areas)
+
+print(f"Общая площадь квартиры: {total_area:.2f} кв. м.")
