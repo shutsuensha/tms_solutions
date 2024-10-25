@@ -1,24 +1,23 @@
-def sum_diagonals(matrix):
-    M = len(matrix)
-    N = len(matrix[0])
-    main_diagonal_sum = 0
-    secondary_diagonal_sum = 0
+def add_even_column(matrix):
+    new_column = []
+    
+    for row in matrix:
+        count_ones = row.count(1)
+        new_column.append(0 if count_ones % 2 == 0 else 1)
 
-    for i in range(M):
-        if i < N:
-            main_diagonal_sum += matrix[i][i]
-        if i < N:
-            secondary_diagonal_sum += matrix[i][N - 1 - i]
-
-    return main_diagonal_sum, secondary_diagonal_sum
+    for i in range(len(matrix)):
+        matrix[i].append(new_column[i])
+    
+    return matrix
 
 matrix = [
-    [1, 2, 3],
-    [4, 5, 6],
-    [7, 8, 9]
+    [0, 1, 0],
+    [1, 1, 1],
+    [0, 0, 1],
+    [1, 0, 0]
 ]
 
-main_sum, secondary_sum = sum_diagonals(matrix)
+updated_matrix = add_even_column(matrix)
 
-print(f"Сумма элементов главной диагонали: {main_sum}")
-print(f"Сумма элементов побочной диагонали: {secondary_sum}")
+for row in updated_matrix:
+    print(row)
