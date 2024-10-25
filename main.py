@@ -1,32 +1,21 @@
-import math
+def create_matrix(n):
+    start = 100  
+    step = 2     
+    matrix = []  
 
-def calculate_year_length(R, v):
-    # Формула расчета длины года
-    L = (2 * R * math.pi) / v
-    return L
+    # Заполняем матрицу
+    for i in range(n):
+        row = []
+        for j in range(n):
+            row.append(start)
+            start += step
+        matrix.append(row)
 
-# Ввод данных для первой планеты
-print("Первая планета:")
-R1 = float(input("Введите радиус орбиты (млн км): ")) * 1_000_000  # Перевод в километры
-v1 = float(input("Введите орбитальную скорость (км/ч): "))
+    return matrix
 
-# Ввод данных для второй планеты
-print("\nВторая планета:")
-R2 = float(input("Введите радиус орбиты (млн км): ")) * 1_000_000  # Перевод в километры
-v2 = float(input("Введите орбитальную скорость (км/ч): "))
+n = int(input("Введите размер матрицы: "))
+matrix = create_matrix(n)
 
-# Вычисляем длину года для обеих планет
-L1 = calculate_year_length(R1, v1)
-L2 = calculate_year_length(R2, v2)
-
-# Выводим результаты
-print(f"\nДлина года на первой планете: {L1:.2f} часов")
-print(f"Длина года на второй планете: {L2:.2f} часов")
-
-# Сравнение
-if L1 > L2:
-    print("\nГод на первой планете длиннее.")
-elif L1 < L2:
-    print("\nГод на второй планете длиннее.")
-else:
-    print("\nГоды на обеих планетах одинаковой длины.")
+# Печать матрицы
+for row in matrix:
+    print(row)
