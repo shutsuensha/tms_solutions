@@ -1,22 +1,16 @@
-def create_matrix(n):
-    start = 100 
-    step = 2    
-    matrix = []  
-
-    for i in range(n):
-        row = []
-        for j in range(n):
-            row.append(start)
-            start += step
-        matrix.append(row)
-
-    return matrix
-
-def print_matrix(matrix):
-    for row in matrix:
-        print("  ".join(map(str, row)))
+def transpose_matrix(matrix):
+    
+    transposed = [list(row) for row in zip(*matrix)]
+    return transposed
 
 
-n = int(input("Введите размер матрицы: "))
-matrix = create_matrix(n)
-print_matrix(matrix)
+matrix = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+
+transposed_matrix = transpose_matrix(matrix)
+
+for row in transposed_matrix:
+    print(row)
