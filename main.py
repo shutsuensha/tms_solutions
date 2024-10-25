@@ -1,17 +1,31 @@
-import math
+def calculate_monthly_payment(s, i, n):
+    # Годовая процентная ставка i переводится в месячную
+    p = i / 12 / 100
+    # Формула расчета ежемесячной выплаты
+    m = s * p * (1 + p)**n / ((1 + p)**n - 1)
+    return m
 
-a = 2
-b = 4
-y = a**2 / 3 + (a**2 + 4) / b + ((a**2 + 4) ** 0.5) / 4 + ((a**2 + 4)**3)**0.5 / 4
-print(f"{y=}")
+def calculate_total_payment(m, n):
+    # Общая сумма выплат
+    return m * n
 
+def calculate_overpayment(total_payment, s):
+    # Переплата
+    return total_payment - s
 
-x = 2
-y = (math.cos(x**2)**2 + math.sin(2*x - 1)**2) ** (1/3)
-print(f"{y=}")
+# Ввод данных от пользователя
+s = float(input("Введите сумму займа (s): "))
+i = float(input("Введите годовую процентную ставку (i) в %: "))
+n = int(input("Введите количество месяцев (n): "))
 
-y = math.cos(x) + math.sin(x)
-print(f"{y=}")
+# Расчет ежемесячной выплаты
+monthly_payment = calculate_monthly_payment(s, i, n)
 
-y = 5*x + 3*x**2*(1 + math.sin(x)**2)**0.5
-print(f"{y=}")
+# Общая сумма выплат и переплата
+total_payment = calculate_total_payment(monthly_payment, n)
+overpayment = calculate_overpayment(total_payment, s)
+
+# Вывод результатов
+print(f"\nЕжемесячная выплата: {monthly_payment:.2f}")
+print(f"Общая сумма выплат: {total_payment:.2f}")
+print(f"Переплата: {overpayment:.2f}")
