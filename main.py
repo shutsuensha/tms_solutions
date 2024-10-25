@@ -1,6 +1,6 @@
 number = 123
 
-# Tens digit
-tens_digit = (number // 10) % 10
+# Sum of digits
+sum_of_digits = sum(int(digit) for digit in str(number))
 
-print(f"Tens digit: {tens_digit}")
+print(f"Sum of digits: {sum_of_digits}")
