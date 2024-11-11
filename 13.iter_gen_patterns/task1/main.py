@@ -3,6 +3,7 @@ def cyclic_sequence(sequence):
         for number in sequence:
             yield number
 
+
 sequence = [1, 2, 3]
 
 generator = cyclic_sequence(sequence)
