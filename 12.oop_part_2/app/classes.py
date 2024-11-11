@@ -32,25 +32,22 @@ class Book:
 
 class Library:
     def __init__(self):
-        self.books = []
+        self.books = {}
         self._next_id = 1
 
     def add_book(self, book: Book):
         book.book_id = self._next_id
-        self.books.append(book)
+        self.books[self._next_id] = book
         self._next_id += 1
 
     def get_book_info(self, book_id: int) -> Optional[Book]:
-        for book in self.books:
-            if book.book_id == book_id:
-                return book
-        return None
+        return self.books.get(book_id, None)
     
     def find_books_by_author(self, author: str) -> list[Book]:
-        return [book for book in self.books if book.author == author]
+        return [book for book in self.books.values() if book.author == author]
 
     def find_books_by_authors(self, authors: list[str]) -> list[Book]:
-        return [book for book in self.books if book.author in authors]
+        return [book for book in self.books.values() if book.author in authors]
 
     def __str__(self):
-        return "\n".join(str(book) for book in self.books)
+        return "\n".join(str(book) for book in self.books.values())
