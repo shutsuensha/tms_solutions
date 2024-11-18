@@ -9,7 +9,7 @@ CREATE TABLE authors (
 CREATE TABLE books (
     id SERIAL PRIMARY KEY,
     title VARCHAR(100) NOT NULL,
-    author_id INT NOT NULL,
+    author_id INT,
     publication_year INT NOT NULL,
     CONSTRAINT fk_author FOREIGN KEY (author_id) REFERENCES authors(id)
 );
