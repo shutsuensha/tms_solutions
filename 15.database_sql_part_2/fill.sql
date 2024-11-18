@@ -14,7 +14,8 @@ VALUES
     ('Animal Farm', 1, 1945),
     ('Harry Potter and the Philosopher`s Stone', 2, 1997),
     ('The Hobbit', 3, 1937),
-    ('The Lord of the Rings', 3, 1954);
+    ('The Lord of the Rings', 3, 1954),
+    ('Unknown Book', NULL, 2024);
 
 
 -- Добавление продаж в таблицу sales
