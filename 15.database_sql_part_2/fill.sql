@@ -3,7 +3,8 @@ INSERT INTO authors (first_name, last_name)
 VALUES 
     ('George', 'Orwell'),
     ('J.K.', 'Rowling'),
-    ('J.R.R.', 'Tolkien');
+    ('J.R.R.', 'Tolkien'),
+    ('Stephen', 'King');
 
 
 -- Добавление книг в таблицу books
