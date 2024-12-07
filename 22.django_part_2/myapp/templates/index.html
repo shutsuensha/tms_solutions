@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список книг</title>
+</head>
+<body>
+    <nav>
+        <a href="{% url 'add_book_form' %}">Добавить новую книгу forms.Form</a> |
+        <a href="{% url 'add_book_form_model' %}">Добавить новую книгу forms.ModelForm</a> |
+    </nav>
+    <hr>
+    <h1>Список книг</h1>
+    {% if page_obj.object_list %}
+        <ul>
+            {% for book in page_obj.object_list %}
+                <li>
+                    <strong>{{ book.title }}</strong> — {{ book.author }}
+                    <br>
+                    <em>Дата публикации:</em> {{ book.publication_date }}
+                    <br>
+                    <em>ISBN:</em> {{ book.isbn }}
+                    <br>
+                    <em>Количество страниц:</em> {{ book.pages }}
+                </li>
+                <hr>
+            {% endfor %}
+        </ul>
+
+        <div class="pagination">
+            {% if page_obj.has_previous %}
+                <a href="?page={{ page_obj.previous_page_number }}">Назад</a>
+            {% endif %}
+
+            <span>Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}</span>
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">Вперёд</a>
+            {% endif %}
+        </div>
+    {% else %}
+        <p>Книг пока нет.</p>
+    {% endif %}
+</body>
+</html>
