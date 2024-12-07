@@ -1,13 +1,34 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Книги</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список книг</title>
 </head>
 <body>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Добавить книгу</button>
-    </form>
+    <nav>
+        <a href="{% url 'add_book_form' %}">Добавить новую книгу forms.Form</a> |
+        <a href="{% url 'add_book_form_model' %}">Добавить новую книгу forms.ModelForm</a> |
+    </nav>
+    <hr>
+    <h1>Список книг</h1>
+    {% if books %}
+        <ul>
+            {% for book in books %}
+                <li>
+                    <strong>{{ book.title }}</strong> — {{ book.author }}
+                    <br>
+                    <em>Дата публикации:</em> {{ book.publication_date }}
+                    <br>
+                    <em>ISBN:</em> {{ book.isbn }}
+                    <br>
+                    <em>Количество страниц:</em> {{ book.pages }}
+                </li>
+                <hr>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Книг пока нет.</p>
+    {% endif %}
 </body>
 </html>
