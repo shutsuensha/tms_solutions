@@ -1,11 +1,17 @@
 from django.shortcuts import render, redirect
+from django.core.paginator import Paginator
 from .models import Book
 from .forms import BookForm, BookFormModel
 
 
 def index(request):
-    books = Book.objects.all()
-    return render(request, 'index.html', {'books': books})
+    books = Book.objects.all()  
+    paginator = Paginator(books, 1) 
+
+    page_number = request.GET.get('page', 1)
+    page_obj = paginator.get_page(page_number)
+
+    return render(request, 'index.html', {'page_obj': page_obj})
 
 
 def add_book_form_view(request):

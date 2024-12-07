@@ -12,9 +12,9 @@
     </nav>
     <hr>
     <h1>Список книг</h1>
-    {% if books %}
+    {% if page_obj.object_list %}
         <ul>
-            {% for book in books %}
+            {% for book in page_obj.object_list %}
                 <li>
                     <strong>{{ book.title }}</strong> — {{ book.author }}
                     <br>
@@ -27,6 +27,18 @@
                 <hr>
             {% endfor %}
         </ul>
+
+        <div class="pagination">
+            {% if page_obj.has_previous %}
+                <a href="?page={{ page_obj.previous_page_number }}">Назад</a>
+            {% endif %}
+
+            <span>Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}</span>
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">Вперёд</a>
+            {% endif %}
+        </div>
     {% else %}
         <p>Книг пока нет.</p>
     {% endif %}
